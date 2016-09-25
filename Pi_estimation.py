@@ -26,10 +26,10 @@ while count < noOfTrials:
     limit = 1.0
     sampleX = np.random.uniform(-limit, limit, m)  # Stores the randomly generated x co-ordinate of the points
     sampleY = np.random.uniform(-limit, limit, m)  # Stores the randomly generated y co-ordinate of the points
-    n = 0.0
+    n = 0.0                                        # Counts number of points inside the circle
 
     for i, j in zip(sampleX, sampleY):             # Finds out which points lie in the circle
-        dist = i**2 + j**2
+        dist = (i**2 + j**2)**0.5
         if dist < 1:
             n += 1
 
@@ -44,5 +44,5 @@ stdDeviation = np.std(piTrials)   # Calculating the standard deviation of the es
 print stdDeviation
 error[:] = [x - math.pi for x in piTrials]  # error of the estimated value from the actual value of PI
 print error
-plt.hist(piTrials, 23, normed=1, facecolor='green')  # Plotting the histogram
+plt.hist(piTrials, 23, normed=1, facecolor='green')  # Plotting the histogram. Number of bins = 23. 
 plt.show()
