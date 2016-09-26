@@ -1,9 +1,7 @@
 """
-
 Monte Carlo Simulation for estimation of value of PI
 The circle has radius 1 unit and it's centre is at origin
 The square is therefore circumscribed on the circle with its appropriate sides parallel to the axis
-
 """
 
 import numpy as np
@@ -39,10 +37,13 @@ while count < noOfTrials:
 
 #
 piMean /= noOfTrials  # Calculates the mean of the estimated values
-print piMean
-stdDeviation = np.std(piTrials)   # Calculating the standard deviation of the estimates of PI
-print stdDeviation
+print "The mean value of Pi is - ", piMean
+sampleWidth = np.std(piTrials)   # Calculating the sample width of the estimates of PI
+stdDeviation = math.sqrt(noOfTrials/(noOfTrials-1))
+print "The Error in the mean value of Pi is - ", stdDeviation
 error[:] = [x - math.pi for x in piTrials]  # error of the estimated value from the actual value of PI
-print error
-plt.hist(piTrials, 23, normed=1, facecolor='green')  # Plotting the histogram. Number of bins = 23. 
+plt.hist(piTrials, 23, normed=1, facecolor='green')  # Plotting the histogram. Number of bins = 23.
+plt.title("Probability Density Function")
+plt.ylabel("Probability Density")
+plt.xlabel("Value of Pi")
 plt.show()
