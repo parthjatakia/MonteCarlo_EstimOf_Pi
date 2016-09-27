@@ -39,7 +39,7 @@ while count < noOfTrials:
 piMean /= noOfTrials  # Calculates the mean of the estimated values
 print "The mean value of Pi is - ", piMean
 sampleWidth = np.std(piTrials)   # Calculating the sample width of the estimates of PI
-stdDeviation = math.sqrt(noOfTrials/(noOfTrials-1))
+stdDeviation = math.sqrt(noOfTrials/(noOfTrials-1))*sampleWidth
 print "The Error in the mean value of Pi is - ", stdDeviation
 error[:] = [x - math.pi for x in piTrials]  # error of the estimated value from the actual value of PI
 plt.hist(piTrials, 23, normed=1, facecolor='green')  # Plotting the histogram. Number of bins = 23.
